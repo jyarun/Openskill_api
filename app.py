@@ -25,11 +25,11 @@ def home():
 app.register_blueprint(jobs_api)
 app.register_blueprint(skills_api)    
 
-
-db.create_all()
-db.session.commit()
-load_data_from_externalapi()
-app.run(debug=True)
+if __name__ == '__main__':
+    db.create_all()
+    db.session.commit()
+    load_data_from_externalapi()
+    app.run(debug=True)
 
 
 
