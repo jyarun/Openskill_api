@@ -1,9 +1,11 @@
 from dal.skills_dal import SkillsDAL
 
+
 def get_all_skills():
     skills_dal = SkillsDAL()
     skills = skills_dal.get_all_skills()
     return skills
+
 
 def get_skill(request):
     if 'uuid' in request.args:
@@ -17,12 +19,3 @@ def get_skill(request):
     else:
         return skill
     return skill
-
-
-
-
-
-
-
-
-

@@ -8,22 +8,11 @@ def get_all_jobs():
     jobs = jobs_dal.get_all_jobs()
     return jobs
 
-def get_job(request):
-    if 'uuid' in request.args:
-        uuid = str(request.args['uuid'])
-    else:
-        return "Error: No uuid field provided. Please specify a valid id."
+
+def get_job(uuid):
     jobs_dal = JobsDAL()
     job = jobs_dal.get_job(uuid)
     if not job:
         return "Error: No job with given uuid found. Please specify a valid id."
     else:
         return job
-
-
-
-
-
-
-
-

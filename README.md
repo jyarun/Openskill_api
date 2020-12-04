@@ -6,18 +6,9 @@ It is the first test version developed for the BACKEND-DEVELOPMENT course taught
 
 
 
-<br>
-## Initialize database and migrations
-#### before run the app, please run below command
 
-    flask db init - this will create a folder inside the app directory.
-    
-    flask db migrate - this will create all the migrations.
-    
-    flask db upgrade
-    
 
-<br>
+
 
 ### Endpoints
 
@@ -27,7 +18,6 @@ It is the first test version developed for the BACKEND-DEVELOPMENT course taught
 |  GET    | /api/jobs?uuid={job_uuid} | URL to fetch job information given uuid|
 |  GET    | /api/skills/all | URL to fetch all skills from database|
 |  GET    | /api/skills?uuid={skill_uuid} | URL to fetch skill information given uuid|
-
 
 
 

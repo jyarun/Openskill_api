@@ -2,6 +2,8 @@ from dal.jobs_dal import JobsDAL
 from dal.skills_dal import SkillsDAL
 from dal.models import db, Job, Skill
 import requests
+
+
 def load_data_from_externalapi():
     try:
         if len(db.session.query(Job).all()) == 0:
@@ -13,7 +15,7 @@ def load_data_from_externalapi():
                 for each_job in jobs_results:
                     if each_job.get("uuid", None):
                         jobs_dal = JobsDAL()
-                        created_job = jobs_dal.create_job(each_job)
+                        jobs_dal.create_job(each_job)
 
         if len(db.session.query(Skill).all()) == 0:
             response = requests.get(f"http://api.dataatwork.org/v1/skills")
@@ -24,7 +26,13 @@ def load_data_from_externalapi():
                 for each_skill in skills_results:
                     if each_skill.get("uuid", None):
                         skills_dal = SkillsDAL()
-                        created_skill = skills_dal.create_skill(each_skill)
+                        skills_dal.create_skill(each_skill)
+        # These two code blocks are huge (10 lines each) and look really similar
+        # Best if you tried to abstract the differneces and see if a function
+        # can be created and you call them in the same way.
+        # Its much each easier for the later person(me now or you in 6month) to see that
+        # in one function, so its in an instant understandable that they are
+        # doing the same thing without looking into more depth.
         else:
             print("Job Information already exist in table")
     except Exception as excp:

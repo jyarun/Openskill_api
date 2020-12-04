@@ -5,6 +5,7 @@ from service import skills_service
 
 skills_api = Blueprint('skills_api', __name__)
 
+
 @skills_api.route('/api/skills/all', methods=['GET'])
 def get_skills_all():
     results = skills_service.get_all_skills()
@@ -15,13 +16,3 @@ def get_skills_all():
 def get_skill():
     results = skills_service.get_skill(request)
     return jsonify(results)
-
-
-
-
-
-
-
-
-
-
