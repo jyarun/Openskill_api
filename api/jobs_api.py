@@ -13,10 +13,6 @@ def get_job_all():
 
 @jobs_api.route('/api/jobs', methods=['GET'])
 def get_job():
-    # It is a better idea to get the uuid from the request here
-    # and pass it to the service, the service should not care about the
-    # the request that much but should get only its uuid and the error handling should
-    # be done here then
     if 'uuid' in request.args:
         uuid = str(request.args['uuid'])
         results = jobs_service.get_job(uuid)
